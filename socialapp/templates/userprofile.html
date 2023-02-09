@@ -1,0 +1,323 @@
+{% extends 'index.html' %}
+{% block body_block %}
+
+<style>
+    body {
+        margin-top: 20px;
+        color: #1a202c;
+        text-align: left;
+        background-color: #e2e8f0;
+    }
+
+    .main-body {
+        padding: 15px;
+    }
+
+    .card-1 {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+    }
+
+    .card-1 {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0 solid rgba(0, 0, 0, .125);
+        border-radius: .25rem;
+    }
+
+    .card-body-1 {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1rem;
+    }
+
+    .gutters-sm {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+    .gutters-sm>.col,
+    .gutters-sm>[class*=col-] {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .mb-3,
+    .my-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    .bg-gray-300 {
+        background-color: #e2e8f0;
+    }
+
+    .h-100 {
+        height: 100% !important;
+    }
+
+    .shadow-none {
+        box-shadow: none !important;
+    }
+
+    .list-group-item:first-child {
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+
+    .list-group-item:first-child {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+    }
+
+    a.list-group-item {
+        padding-top: .87rem;
+        padding-bottom: .87rem;
+    }
+
+    a.list-group-item,
+    .list-group-item-action {
+        transition: all .25s;
+        color: #606975;
+        font-weight: 500;
+    }
+
+    .with-badge {
+        position: relative;
+        padding-right: 3.3rem;
+    }
+
+    .list-group-item {
+        border-color: #e1e7ec;
+        background-color: #fff;
+        text-decoration: none;
+    }
+
+    .list-group-item {
+        position: relative;
+        display: block;
+        padding: .75rem 1.25rem;
+        margin-bottom: -1px;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+    }
+</style>
+
+<div class="container">
+
+    <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+            <div class="card card-1">
+                <div class="card-body card-body-1 ">
+                    <div class="d-flex flex-column align-items-center text-center">
+                        {%if userd.image%}
+                        <img src="{{userd.image.url}}" alt="Admin" class="rounded-circle" width="150">
+                        {%endif%}
+                        <div class="mt-3">
+                            <h4>{{user.first_name}}&nbsp;{{user.last_name}}</h4>
+                            <p class="text-muted font-size-sm">{{userd.place}}</p>
+                            <p class="text-muted font-size-sm">{{user.date_joined}}</p>
+                            <button class="btn btn-primary">Follow</button>
+                            <button class="btn btn-outline-primary">Message</button>
+                        </div>
+                    </div>
+                    <nav class="list-group mt-3">
+                        <a class="list-group-item " href="{% url 'home' %}"><i
+                                class="fa-solid fa-house"></i>&nbsp;Home</a>
+                        <a class="list-group-item active" href="{%url 'userprofile'%}"><i class="fa-solid fa-address-card"></i>&nbsp;My
+                            Profile</a>
+                        <a class="list-group-item" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i>&nbsp;user
+                            detail</a>
+                        <a class="list-group-item" href="{%url 'userprofile'%}"><i class="fa-solid fa-image"></i>&nbsp;My Posts</a>
+                        <a class="list-group-item" href="{%url 'home'%}"><i class="fa-solid fa-plus"></i>&nbsp;Add post</a>
+                        <a class="list-group-item" href="{%url 'logout'%}"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Logout</a>
+
+
+                    </nav>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <div class="card card-1 mb-3">
+                <div class="card-body card-body-1">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{user.first_name}}&nbsp;{{user.last_name}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{user.email}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Phone</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{userd.phone}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Mobile</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{userd.phone}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">Address</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{userd.place}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h6 class="mb-0">DOB</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{userd.dob}}
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <h2 style="margin-left: 450px; margin-top: -350px;">My Posts</h2>
+        {%for post in posts%}
+
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-8 " style="margin-top: -250px; margin-bottom: 250px;">
+
+                <div class="card mb-4">
+
+
+
+
+
+
+                    <div class="card-body">
+                        {%if post.image%}
+                        <a href=""><img class="card-img-top" src="{{post.image.url}}" alt="" /></a>
+                        {%endif%}
+
+
+                        <h2 class="card-title">{{post.title}}</h2>
+                        <p class="card-text">{{post.description}}</p>
+                        <a href="{% url 'like' post.id%}" class="btn"><i
+                                class="fa-solid fa-heart"></i></a>{{post.like.all.count}}&nbsp;Likes
+                        <button class="btn" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample{{ forloop.counter }}" aria-expanded="false"
+                            aria-controls="collapseExample">
+                            <i class="fa-solid fa-comment"></i>
+                        </button>
+                        <a class="" data-bs-toggle="collapse" href="#commentlist{{ forloop.counter }}" role="button"
+                            aria-expanded="false" aria-controls="collapseExample"
+                            style="text-decoration:none; color: black;">
+                            comments
+                        </a>
+
+
+                        <div class="small text-muted">&nbsp;&nbsp;&nbsp;{{post.date}}</div>
+
+                        <a class="btn" href="{%url 'delete' post.id%}" style="margin-left: 750px;"><i
+                                class="fa-solid fa-trash"></i></a>
+
+
+                        <div class="collapse mb-2 mt-4" id="commentlist{{ forloop.counter }}">
+
+
+
+                            <ul class="list-group">
+
+                                {%for com in post.fetch_comments%}
+
+
+                                <li class="list-group-item">{{com.comment}}
+                                    <p class="post-meta pt-2" style="font-size: smaller;">
+                                        Posted by {{com.user}}
+                                    </p>
+                                    <p style="font-size: smaller;">on {{com.date}}</p>
+                                    <hr>
+
+
+
+                                </li>
+
+
+
+
+
+                                {%endfor%}
+                            </ul>
+
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="collapse mb-5" id="collapseExample{{ forloop.counter }}">
+                    <div class="card card-body">
+
+                        <form action="{% url 'comment' post.id%}" method="post">
+                            {%csrf_token%}
+                            <textarea name="answer" id="" cols="30" rows="3"
+                                class="form-control border border-top-0 border-start-0 border-end-0"
+                                placeholder="Comment"></textarea>
+                            <input type="submit" value="Comment" class="btn btn-sm btn-dark mt-3">
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+
+        {%endfor%}
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
